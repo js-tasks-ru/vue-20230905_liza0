@@ -31,23 +31,23 @@
     <div id="app" class="container">
       <div class="row">
         <div class="col">
-          <input type="number" />
+          <input type="number" v-model="first_number"/>
         </div>
 
-        <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
-          <label><input type="radio" name="operator" value="sum" /> ➕</label>
-          <label><input type="radio" name="operator" value="subtract" /> ➖</label>
-          <label><input type="radio" name="operator" value="multiply" /> ✖</label>
-          <label><input type="radio" name="operator" value="divide" /> ➗</label>
+        <div class="col" style="display: flex; flex-direction: column; font-family: emoji" @click="checkForm()">
+          <label><input type="radio" name="operator" value="sum" v-model="action"/> ➕</label>
+          <label><input type="radio" name="operator" value="subtract" v-model="action"/> ➖</label>
+          <label><input type="radio" name="operator" value="multiply" v-model="action"/> ✖</label>
+          <label><input type="radio" name="operator" value="divide" v-model="action"/> ➗</label>
         </div>
 
         <div class="col">
-          <input type="number" />
+          <input type="number" v-model="second_number"/>
         </div>
 
         <div class="col">=</div>
 
-        <output class="col">0</output>
+        <output class="col">{{ checkForm() }}</output>
       </div>
     </div>
 
