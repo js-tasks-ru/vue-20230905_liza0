@@ -8,7 +8,7 @@
     <div id="app">
 
       <div>
-        <label><input type="radio" name="meetupId" value="1" v-model="title_id"/> 1</label>
+        <label><input type="radio" name="meetupId" value="45" v-model="title_id"/> 1</label>
         <label><input type="radio" name="meetupId" value="2" v-model="title_id"/> 2</label>
         <label><input type="radio" name="meetupId" value="3" v-model="title_id"/> 3</label>
         <label><input type="radio" name="meetupId" value="4" v-model="title_id"/> 4</label>
@@ -16,11 +16,10 @@
 
         <hr />
 
-        <h3 v-if="meetup !== null" v-for="item in meetup" :key="item.title">
-          {{ item.title }}
+        <h3 v-if="meetup !== null">
+          {{ meetup.title }}
         </h3>
 
-        <h3 v-else>MEETUP_TITLE</h3>
       </div>
     </div>
 

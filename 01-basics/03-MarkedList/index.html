@@ -14,12 +14,12 @@
     <div id="app" style="margin-top: 2rem">
       <div class="container">
         <div class="form-group">
-          <input type="search" v-model.trim="filter.search"/>
+          <input type="search" v-model="search"/>
         </div>
 
         <ul>
-          <template v-for="email in emails">
-            <li :class="{ 'marked' : filteredEmails.includes(email) }">{{ email }}</li>
+          <template v-for="item in filteredEmails">
+            <li :class="{marked : item.flag}">{{ item.email }}</li>
           </template>
         </ul>
       </div>

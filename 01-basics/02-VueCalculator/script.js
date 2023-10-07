@@ -5,29 +5,29 @@ const CalculatorComponent = defineComponent({
 
   data(){
     return{
+      sum_number:0,
       first_number: 0,
       second_number: 0,
       action : ''
     }
   },
 
-  methods: {
-    checkForm() {
-      if( this.action === "sum"){
-        return this.first_number + this.second_number;
-      }
-      if( this.action === "subtract"){
-        return this.first_number - this.second_number;
-      }
-      if( this.action === "multiply"){
-        return this.first_number * this.second_number;
-      }
-      if( this.action === "divide"){
-        return this.first_number / this.second_number;
-      }
+  watch: {
+    action(newValue){
+        if( newValue === "sum"){
+          return this.sum_number = this.first_number + this.second_number;
+        }
+        if( newValue === "subtract"){
+          return this.sum_number = this.first_number - this.second_number;
+        }
+        if( newValue === "multiply"){
+          return this.sum_number = this.first_number * this.second_number;
+        }
+        if( newValue === "divide"){
+          return this.sum_number = this.first_number / this.second_number;
+        }
     }
   }
-
 });
 
 const app = createApp(CalculatorComponent);

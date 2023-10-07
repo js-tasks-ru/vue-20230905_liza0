@@ -21,15 +21,14 @@ const TitleChangeComponent = defineComponent({
     return{
       meetup: null,
       title_id:'',
-      title_meetup:'MEETUP_TITLE',
+      title_meetup:'',
     }
   },
 
   watch: {
     title_id: {
-      handler() {
-        this.meetup = fetchMeetupById(this.title_id);
-        console.log(this.meetup);
+      async handler() {
+        this.meetup =  await fetchMeetupById(this.title_id);
       }
     }
   },

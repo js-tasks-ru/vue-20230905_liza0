@@ -34,7 +34,7 @@
           <input type="number" v-model="first_number"/>
         </div>
 
-        <div class="col" style="display: flex; flex-direction: column; font-family: emoji" @click="checkForm()">
+        <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
           <label><input type="radio" name="operator" value="sum" v-model="action"/> ➕</label>
           <label><input type="radio" name="operator" value="subtract" v-model="action"/> ➖</label>
           <label><input type="radio" name="operator" value="multiply" v-model="action"/> ✖</label>
@@ -47,7 +47,7 @@
 
         <div class="col">=</div>
 
-        <output class="col">{{ checkForm() }}</output>
+        <output class="col">{{ sum_number }}</output>
       </div>
     </div>
 

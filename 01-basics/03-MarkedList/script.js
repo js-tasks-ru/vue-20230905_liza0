@@ -35,21 +35,31 @@ const ListComponent = defineComponent({
   data(){
     return{
       emails,
-      filter:{
-        search : ' '
-      },
+      search: null
     }
   },
 
   computed: {
-    filteredEmails() {
-      const searchFilter = (email) =>
-        [email]
-          .join(' ')
-          .toLowerCase()
-          .includes(this.filter.search.toLowerCase());
+    filteredEmails(){
+      let arrObjects = {};
 
-      return this.emails.filter((email) => searchFilter(email));
+      for (let i = 0; i < emails.length; i++) {
+        let flag_value = false;
+
+        if(emails[i].includes(this.search)){
+          flag_value =  true;
+
+          if(this.search === ''){
+            flag_value = false;
+          }
+        }
+        arrObjects[i] = {
+          email : emails[i],
+          flag : flag_value
+        }
+      }
+
+      return arrObjects;
     },
   }
 });
