@@ -13,13 +13,14 @@ export default defineComponent({
     return {
       meetups,
       selectedMeetup: 0,
+      description:''
     };
   },
 
-  computed: {
-    description() {
-      return this.meetups[this.selectedMeetup].description;
-    },
+  watch:{
+    selectedMeetup: function () {
+      return this.description = this.meetups[this.selectedMeetup].description;
+    }
   },
 
   template: `

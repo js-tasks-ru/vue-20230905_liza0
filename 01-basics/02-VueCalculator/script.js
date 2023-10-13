@@ -5,7 +5,6 @@ const CalculatorComponent = defineComponent({
 
   data(){
     return{
-      sum_number:0,
       first_number: 0,
       second_number: 0,
       action : ''
@@ -14,19 +13,36 @@ const CalculatorComponent = defineComponent({
 
   watch: {
     action(newValue){
-        if( newValue === "sum"){
-          return this.sum_number = this.first_number + this.second_number;
-        }
-        if( newValue === "subtract"){
-          return this.sum_number = this.first_number - this.second_number;
-        }
-        if( newValue === "multiply"){
-          return this.sum_number = this.first_number * this.second_number;
-        }
-        if( newValue === "divide"){
-          return this.sum_number = this.first_number / this.second_number;
-        }
+      this.CheckCalculator(newValue);
     }
+  },
+
+  computed:{
+    sum_number: function(){
+      return this.CheckCalculator(this.action);
+    }
+  },
+
+  methods:{
+    CheckCalculator(value){
+
+      let sum_number = 0;
+
+      if( value === "sum"){
+        sum_number = this.first_number + this.second_number;
+      }
+      if( value === "subtract"){
+        sum_number = this.first_number - this.second_number;
+      }
+      if( value === "multiply"){
+        sum_number = this.first_number * this.second_number;
+      }
+      if( value === "divide"){
+        sum_number = this.first_number / this.second_number;
+      }
+
+      return sum_number;
+    },
   }
 });
 

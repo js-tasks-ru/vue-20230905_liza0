@@ -20,15 +20,14 @@ export default defineComponent({
 
   props: {
     meetup: {
-      type: Object,
-      required: true,
+      type: Object
     },
   },
 
   template: `
     <div>
-    <MeetupCover :title="meetup.title" :image="meetup.image" />
 
+    <MeetupCover :title="meetup.title" :image="meetup.image" />
 
     <UiContainer>
         <div class="meetup">

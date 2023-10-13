@@ -41,23 +41,28 @@ const ListComponent = defineComponent({
 
   computed: {
     filteredEmails(){
-      let arrObjects = {};
 
-      for (let i = 0; i < emails.length; i++) {
         let flag_value = false;
 
-        if(emails[i].includes(this.search)){
-          flag_value =  true;
+        const arrObjects = emails.map(item => {
+          let itemArray ={};
 
-          if(this.search === ''){
-            flag_value = false;
+          if(item.includes(this.search)){
+            flag_value =  true;
+
+            if(this.search === ''){
+              flag_value = false;
+            }
           }
-        }
-        arrObjects[i] = {
-          email : emails[i],
-          flag : flag_value
-        }
-      }
+          else{
+            flag_value =  false;
+          }
+
+          itemArray.email = item;
+          itemArray.flag = flag_value;
+
+          return itemArray;
+        });
 
       return arrObjects;
     },

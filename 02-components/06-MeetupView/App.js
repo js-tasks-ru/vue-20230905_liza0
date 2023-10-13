@@ -11,12 +11,12 @@ export default defineComponent({
 
   data() {
     return {
-      meetup: meetups[2],
+      meetups: meetups,
     };
   },
 
   template: `
-    <div class="page-meetup">
+    <div class="page-meetup" v-for="meetup in meetups">
       <MeetupView :meetup="meetup" />
     </div>
   `,

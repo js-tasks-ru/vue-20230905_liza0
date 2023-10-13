@@ -10,21 +10,28 @@ export default defineComponent({
 
   data() {
     return {
-      count: undefined,
+      count: 0,
     };
+  },
+
+  methods:{
+    countSum(){
+      this.count = this.count + 1;
+      return this.count;
+    }
   },
 
   template: `
     <div class="sample container">
       <p>count = {{ count }}</p>
       <p>
-        <CounterButton :count="count" @update:count="count = $event"/>
+        <CounterButton v-model="count" @click="countSum"/>
       </p>
       <p>
-        <CounterButton v-model:count="count" />
+        <CounterButton v-model="count" @click="countSum"/>
       </p>
       <p>
-        <CounterButton v-model:count="count" />
+        <CounterButton v-model="count" @click="countSum"/>
       </p>
     </div>
   `,
