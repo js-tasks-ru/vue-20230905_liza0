@@ -11,39 +11,23 @@ const CalculatorComponent = defineComponent({
     }
   },
 
-  watch: {
-    action(newValue){
-      this.CheckCalculator(newValue);
-    }
-  },
-
   computed:{
-    sum_number: function(){
-      return this.CheckCalculator(this.action);
+    sum_number() {
+      if( this.action === "sum"){
+        return this.first_number + this.second_number;
+      }
+      if( this.action === "subtract"){
+        return this.first_number - this.second_number;
+      }
+      if( this.action === "multiply"){
+        return this.first_number * this.second_number;
+      }
+      if( this.action === "divide"){
+        return this.first_number / this.second_number;
+      }
     }
   },
 
-  methods:{
-    CheckCalculator(value){
-
-      let sum_number = 0;
-
-      if( value === "sum"){
-        sum_number = this.first_number + this.second_number;
-      }
-      if( value === "subtract"){
-        sum_number = this.first_number - this.second_number;
-      }
-      if( value === "multiply"){
-        sum_number = this.first_number * this.second_number;
-      }
-      if( value === "divide"){
-        sum_number = this.first_number / this.second_number;
-      }
-
-      return sum_number;
-    },
-  }
 });
 
 const app = createApp(CalculatorComponent);

@@ -42,28 +42,11 @@ const icons = {
 export default defineComponent({
   name: 'MeetupAgendaItem',
 
-  data(){
-    return  {
-      agendaItemIcons : agendaItemIcons,
-      agendaItemDefaultTitles : agendaItemDefaultTitles,
-    }
-  },
+  agendaItemDefaultTitles,
 
   props:{
     agendaItem:{
-      type:Object,
-      default: function(){
-        return  {
-          id: 0,
-          startsAt: '00:30',
-          endsAt: '00:00',
-          type: null,
-          title: null,
-          description: null,
-          speaker: null,
-          language: null,
-        }
-      }
+      type:Object
     }
   },
 
@@ -80,7 +63,7 @@ export default defineComponent({
       </div>
       <div class="agenda-item__col">{{ agendaItem.startsAt }} - {{ agendaItem.endsAt }}</div>
       <div class="agenda-item__col">
-        <h3 class="agenda-item__title">{{ agendaItem.title == null ? agendaItemDefaultTitles[agendaItem.type] : agendaItem.title}}</h3>
+        <h3 class="agenda-item__title">{{ agendaItem.title == null ? this.$options.agendaItemDefaultTitles[agendaItem.type] : agendaItem.title}}</h3>
         <p class="agenda-item__talk" v-if="agendaItem.type == 'talk'">
           <span>Talk Speaker</span>
           <span class="agenda-item__dot">{{ agendaItem.speaker }}</span>

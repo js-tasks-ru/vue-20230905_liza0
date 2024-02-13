@@ -10,6 +10,7 @@ export default defineComponent({
   data(){
     return{
       meetup:null,
+      error:null
     }
   },
 
@@ -28,26 +29,30 @@ export default defineComponent({
   watch:{
     meetupId:{
       async handler() {
-        this.meetup = await fetchMeetupById(this.meetupId);
-      }
+        this.meetup = null;
+        this.meetup = await fetchMeetupById(this.meetupId).catch(err => this.error = err)
+      },
     }
   },
 
+
   async mounted() {
-    this.meetup = await fetchMeetupById(this.meetupId);
+    this.meetup = await fetchMeetupById(this.meetupId).catch(err => this.error = err)
   },
 
   template: `
     <div class="page-meetup">
 
+    <template v-if="error == null">
       <MeetupView  v-if="meetup != null" :meetup="meetup" />
 
       <UiContainer v-if="meetup == null">
         <UiAlert>Загрузка...</UiAlert>
       </UiContainer>
+    </template>
 
-      <UiContainer v-if="!meetup">
-        <UiAlert>error</UiAlert>
+      <UiContainer v-else>
+        <UiAlert>{{ error }}</UiAlert>
       </UiContainer>
     </div>`,
 });

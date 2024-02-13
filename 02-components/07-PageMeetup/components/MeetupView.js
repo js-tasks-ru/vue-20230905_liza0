@@ -20,14 +20,15 @@ export default defineComponent({
 
   props: {
     meetup: {
-      type: Object
+      type: Object,
+      required: true,
     },
   },
 
   template: `
     <div>
-
     <MeetupCover :title="meetup.title" :image="meetup.image" />
+
 
     <UiContainer>
         <div class="meetup">
@@ -36,7 +37,7 @@ export default defineComponent({
             <MeetupDescription :description="meetup.description" />
 
             <h3>Программа</h3>
-            <MeetupAgenda v-if="meetup.agenda" :agenda="meetup.agenda" />
+            <MeetupAgenda v-if="meetup.agenda.length" :agenda="meetup.agenda" />
             <UiAlert v-else>Программа пока пуста...</UiAlert>
           </div>
           <div class="meetup__aside">

@@ -4,10 +4,15 @@ export default defineComponent({
   name: 'CounterButton',
 
   props: {
-    modelValue: {type: Number, default: 0}
+    count: {
+      type: Number,
+      default: 0
+    }
   },
+
+  emits:['update:count'],
 
   // Компонент должен иметь входной параметр и порождать событие
 
-  template: `<button type="button">{{ modelValue }}</button>`,
+  template: `<button type="button" @click="$emit('update:count', count+1)">{{ count }}</button>`,
 });

@@ -1,6 +1,5 @@
 import { defineComponent } from './vendor/vue.esm-browser.js';
 import MeetupAgenda from './components/MeetupAgenda.js';
-import MeetupAgendaItem from './components/MeetupAgendaItem.js';
 
 export default defineComponent({
   name: 'App',
