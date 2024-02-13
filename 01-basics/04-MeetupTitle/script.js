@@ -1,4 +1,4 @@
-// import { createApp } from './vendor/vue.esm-browser.js';
+import {createApp, defineComponent} from "../01-CounterButtonApp/vendor/vue.esm-browser";
 
 const API_URL = 'https://course-vue.javascript.ru/api';
 
@@ -14,4 +14,27 @@ function fetchMeetupById(meetupId) {
   });
 }
 
-// Требуется создать Vue приложение
+const TitleChangeComponent = defineComponent({
+  name: "TitleChangeComponent",
+
+  data(){
+    return{
+      meetup: null,
+      title_id:'',
+      title_meetup:'',
+    }
+  },
+
+  watch: {
+    title_id: {
+      async handler() {
+        this.meetup =  await fetchMeetupById(this.title_id);
+      }
+    }
+  },
+
+});
+
+const app = createApp(TitleChangeComponent);
+const vm = app.mount('#app')
+

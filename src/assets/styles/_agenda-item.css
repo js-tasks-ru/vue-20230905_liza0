@@ -34,7 +34,8 @@
   font-style: italic;
 }
 
-.agenda-item__dot::before {
+.agenda-item__dot::before,
+.agenda-item__lang::before {
   content: '•';
   color: var(--grey);
   padding: 0 1ch;

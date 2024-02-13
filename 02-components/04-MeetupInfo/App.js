@@ -29,7 +29,7 @@ export default defineComponent({
       <MeetupInfo
         :organizer="meetups[selectedMeetup].organizer"
         :place="meetups[selectedMeetup].place"
-        :date="meetups[selectedMeetup].date"
+        :date="new Date(meetups[selectedMeetup].date)"
       />
     </div>
   `,

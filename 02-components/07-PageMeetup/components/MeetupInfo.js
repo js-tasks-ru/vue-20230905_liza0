@@ -11,11 +11,8 @@ export default defineComponent({
 
   methods: {
     isoDate(date) {
-      return new Date(date).toLocaleString(navigator.language, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(date).toLocaleDateString(navigator.language, options);
     },
 
     dateTime(date){

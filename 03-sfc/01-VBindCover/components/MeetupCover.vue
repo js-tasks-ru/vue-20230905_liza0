@@ -7,6 +7,25 @@
 <script>
 export default {
   name: 'MeetupCover',
+
+  data(){
+    return{
+      imagevalue:'var(--default-cover)',
+    }
+  },
+
+  props:{
+    image:{
+      type: String,
+      default:''
+    }
+  },
+
+  mounted(){
+    if(this.image != null){
+      this.imagevalue = 'url('+this.image+')';
+    }
+  }
 };
 </script>
 
@@ -14,9 +33,7 @@ export default {
 .meetup-cover {
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('https://course-vue.javascript.ru/api/images/2');
-  /* background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--default-cover); */
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), v-bind(imagevalue);
   display: flex;
   flex-direction: column;
   align-items: center;
